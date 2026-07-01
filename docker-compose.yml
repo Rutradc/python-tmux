@@ -1,0 +1,12 @@
+services:
+  bot:
+    build: .
+    container_name: tmux
+
+    volumes:
+      - .:/app
+
+    # env_file:
+    #   - .env
+
+    restart: unless-stopped
