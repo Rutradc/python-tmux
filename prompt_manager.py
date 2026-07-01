@@ -4,6 +4,8 @@ import asyncio
 class PromptManager:
     def manage_prompt(self, prompt: str):
         parts: list[str]= prompt.split()
+        if len(parts) == 0:
+            return
         match parts[0].lower():
             case 'help':
                 print(

@@ -15,3 +15,6 @@ with patch_stdout():
             prompt_manager.manage_prompt(cmd)
         except (EOFError, KeyboardInterrupt):
             break
+        except Exception:
+            import traceback
+            traceback.print_exc()
