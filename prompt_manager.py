@@ -19,8 +19,27 @@ attack {character_name: str}
 
 TO GET HELP (THIS PANEL)
 help
+
+TO GET OUT OF TMUX (DETACH)
+Ctrl + B then D
 ''')
             case 'gather':
-                print(f'Gather command with {parts[0]}')
+                if len(parts) > 4:
+                    print(f'{len(parts)} is {len(parts) - 3} too many arguments')
+                if parts[1] not in ['Rutradc', 'PoorBulma', 'Jojo', 'Cimeo', 'SosoCheon']:
+                    print(f'{parts[1]} is not a valid character_name !')
+                    return
+                if parts[2] not in ['COPPER', 'IRON', 'ASH_WOOD']:
+                    print(f'{parts[2]} is not a valid Resource !')
+                    return
+                if len(parts) == 3 and parts[3] not in ['True', 'False']:
+                    print(f'{parts[3]} is not a valid boolean for crafting !')
+                character_name: str = parts[1]
+                resource = parts[2]
+                if len(parts) == 4:
+                    crafting = parts[3] == 'True'
+                    print('self.actions_service.gather_ressource(character_name, resource, crafting)')
+                else:
+                    print('self.actions_service.gather_ressource(character_name, resource)')
             case _:
                 print(f'{parts[0]} is not a known command\n')
